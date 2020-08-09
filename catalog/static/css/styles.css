@@ -3,3 +3,13 @@
     padding: 0;
     list-style: none;
 }
+
+li {
+    list-style-type: disc;
+}
+
+a:hover {
+    text-decoration: wavy;
+    color: hotpink;
+    background-color: black;
+}

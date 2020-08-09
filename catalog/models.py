@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse # Used to generate URLS by reversing the URL pattrens
 import uuid # required book instances
+from django.contrib.auth.models import User
+from datetime import date
 
 
 class Genre(models.Model):
@@ -45,6 +47,7 @@ class BookInstance(models.Model):# Model representing the specific copy of the b
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
+    borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True) # user who borrowed
 
     LOAN_STATUS = (
         ('m', 'Maintenance'),
@@ -56,13 +59,20 @@ class BookInstance(models.Model):# Model representing the specific copy of the b
     status = models.CharField(
         max_length=1,
         choices=LOAN_STATUS,
-        blank= True,
-        default= 'm',
+        blank=True,
+        default='m',
         help_text='Book Availability',
     )
 
     class Meta:
         ordering = ['due_back'] # to order the records when they are returned in a query
+        permissions = (("can_mark_returned", "Set book as returned"),)
+
+    @property
+    def is_overdue(self):
+        if self.due_back and date.today() > self.due_back:
+            return True
+        return False
 
     def __str__(self):# Shown in output in admin panel
         return f'{self.id} ({self.book.title})'

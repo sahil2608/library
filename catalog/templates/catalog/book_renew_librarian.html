@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Renew: {{book_instance.book.title}}</h1>
+    <p>Borrower: {{book_instance.borrower}}</p>
+    <p {% if book_instance.is_overdue %} class="text-danger" {% endif %}>Due Date: {{book_instance.due_back}}</p>
+
+    <form action="" method="post"> <!-- Empty action means that the form data will be posted back to the  current URL-->
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }} <!-- form variable from context,as_table default rendering of all the form fields -->
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock%}
