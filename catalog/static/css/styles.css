@@ -1,15 +1,98 @@
+@font-face {
+    font-family: 'dark_collegeregular';
+    src: url('fonts/dark_college-webfont.woff2') format('woff2'), url('fonts/dark_college-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kaushan_scriptregular';
+    src: url('fonts/kaushanscript-regular-webfont.woff2') format('woff2'), url('fonts/kaushanscript-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* classes */
+
+.cent {
+    text-align: center;
+}
+
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
     list-style: none;
 }
 
+
+/* font */
+
+html {
+    font-size: 10px;
+}
+
+h1 {
+    font-family: dark_collegeregular;
+    text-align: center;
+    padding: 20px;
+    font-size: 5rem;
+}
+
+p,
+a,
+ul,
 li {
-    list-style-type: disc;
+    font-size: 2rem;
+}
+
+li {
+    list-style-type: none;
 }
 
 a:hover {
     text-decoration: wavy;
     color: hotpink;
     background-color: black;
+}
+
+body {
+    background-color: lavenderblush;
+    font-family: kaushan_scriptregular;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    word-spacing: 1px;
+}
+
+header,
+section,
+aside,
+nav,
+footer {
+    padding: 20px;
+}
+
+nav ul li a {
+    color: darkviolet;
+    display: block;
+    border: 2px solid #a66;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid #a66;
+    background-color: rgba(170, 102, 102, 0.145);
+    padding: 0rem;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+nav ul li {
+    list-style: none;
+    width: 13rem;
+    margin: 25px 0 25px 0;
+    line-height: 3;
+}
+
+nav ul li a:hover {
+    background-color: rgba(170, 102, 102, 0.37);
 }
