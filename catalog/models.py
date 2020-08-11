@@ -28,6 +28,16 @@ class Book(models.Model):
     # Genre class has already been defined so we can specify the object above.
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null = True)
+    image = models.ImageField(null=True, blank=True)
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url=''
+        return url
+
 
     def display_genre(self):
         return ','.join([genre.name for genre in self.genre.all()[:3]])
@@ -84,6 +94,7 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
 
     class Meta:
         ordering = ['last_name', 'first_name']

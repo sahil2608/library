@@ -28,3 +28,5 @@ urlpatterns = [
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # to add static files
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# To add images
