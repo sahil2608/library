@@ -28,12 +28,12 @@ class Book(models.Model):
     # Genre class has already been defined so we can specify the object above.
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null = True)
-    image = models.ImageField(null=True, blank=True)
-
+    book_image = models.ImageField(null=True, blank=True)
+    #if image is not present then send an empty string
     @property
-    def imageURL(self):
+    def book_imageURL(self):
         try:
-            url = self.image.url
+            url = self.book_image.url
         except:
             url=''
         return url
@@ -94,10 +94,19 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    author_image = models.ImageField(null=True, blank=True)
 
     class Meta:
         ordering = ['last_name', 'first_name']
+
+    @property
+    def author_imageURL(self):
+        try:
+            url = self.author_image.url
+        except:
+            url=''
+        return url
+
 
     def get_absolute_url(self): # view on site option on website
         """Returns the url to access a particular author instance."""
