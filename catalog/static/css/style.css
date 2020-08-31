@@ -214,8 +214,12 @@ button:hover::before,
 }
 
 .pagination {
-  padding-left: 11rem;
+  padding-left: 20rem;
   padding-top: 3rem;
+}
+
+.booklist_padding {
+  margin: 2rem;
 }
 
 .header h1 {

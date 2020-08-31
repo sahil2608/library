@@ -10,9 +10,8 @@
         <!-- Description link -->
         {% for book in author.book_set.all %}
         <!-- book_set for bringing all books  -->
-        <dt><a href="{% url 'book-detail' book.pk%}">{{book}}</a> ({{book.bookinstance_set.all.count}}) </dt>
-        <dd>{{book.summary}}</dd>
-        {% endfor %}
+        <dt class="booklist_padding"><a href="{% url 'book-detail' book.pk%}">{{book}}</a> ({{book.bookinstance_set.all.count}}) </dt>
+        <dd>{{book.summary}}</dd><br> {% endfor %}
 
     </dl>
 </div>
